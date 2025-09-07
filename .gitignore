@@ -1,0 +1,32 @@
+# Dependências
+/node_modules
+/.pnp
+.pnp.js
+package-lock.json
+
+# Build do Angular
+/dist
+/.angular
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ambiente
+.env
+.env.local
+.env.*.local
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Coverage de testes
+/coverage
