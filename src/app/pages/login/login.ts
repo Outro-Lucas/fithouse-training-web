@@ -43,8 +43,9 @@ export class Login {
     this.authService.login(body).subscribe({
       next: (result: any) => {
         console.log(result);
-        this.global.token = result.access_token;
-        this.global.user = result.user;
+
+        this.global.setSession(result.user, result.access_token);
+
         if (this.global.user?.type === Role.client) {
           this.router.navigate(['/treino']);
         } else if (this.global.user?.type === Role.trainer) {

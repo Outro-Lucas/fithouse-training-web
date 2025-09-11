@@ -20,9 +20,9 @@ export class AuthService {
     }
 
     logout(): void {
-        this.global.token = null;
-        this.global.user = null;
+        this.global.clearSession();
         this.router.navigate(['/']);
     }
+
 
 }

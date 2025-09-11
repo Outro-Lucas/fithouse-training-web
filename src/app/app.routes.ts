@@ -9,7 +9,6 @@ export const routes: Routes = [
     { path: '', component: LandingPage, canActivate: [publicGuard] },
     { path: 'auth', component: Login, canActivate: [publicGuard] },
     { path: 'treino', component: Tutorials, canActivate: [clientGuard] },
-    { path: 'inicio', component: Dashboard, canActivate: [publicGuard] },
-    // { path: 'inicio', component: Dashboard, canActivate: [trainerGuard] },
+    { path: 'inicio', component: Dashboard, canActivate: [trainerGuard] },
     { path: '**', redirectTo: '' } // fallback para qualquer rota inválida
 ];

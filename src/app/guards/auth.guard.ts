@@ -7,14 +7,14 @@ export const publicGuard: CanActivateFn = () => {
     const global = inject(GlobalService);
     const router = inject(Router);
 
-    if (!global.user) {
-        return true; // se não estiver logado, pode acessar
+    if (!global.user || !global.token) {
+        return true;
     }
 
-    // se já estiver logado, redireciona para a rota correspondente
-    if (global.user.type === 'client') {
+    // já logado
+    if (global.user.type === Role.client) {
         router.navigate(['/treino']);
-    } else if (global.user.type === 'trainer') {
+    } else if (global.user.type === Role.trainer) {
         router.navigate(['/inicio']);
     } else {
         router.navigate(['/']);
@@ -27,11 +27,11 @@ export const clientGuard: CanActivateFn = () => {
     const global = inject(GlobalService);
     const router = inject(Router);
 
-    if (global.user?.type === Role.client) {
+    if (global.user?.type === Role.client && global.token) {
         return true;
     }
 
-    router.navigate(['/']); // se não for client volta para landing
+    router.navigate(['/']);
     return false;
 };
 
@@ -39,10 +39,10 @@ export const trainerGuard: CanActivateFn = () => {
     const global = inject(GlobalService);
     const router = inject(Router);
 
-    if (global.user?.type === Role.trainer) {
+    if (global.user?.type === Role.trainer && global.token) {
         return true;
     }
 
-    router.navigate(['/']); // se não for trainer volta para landing
+    router.navigate(['/']);
     return false;
 };
