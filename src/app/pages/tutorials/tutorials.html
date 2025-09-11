@@ -1,1 +1,93 @@
-<p>tutorials works!</p>
+<div class="flex h-screen bg-base-200">
+    <!-- Sidebar -->
+    <aside class="w-72 bg-gray-800 shadow-md flex flex-col z-10 overflow-y-auto">
+        <div class="px-4 py-4 border-b">
+            <div class="flex items-center gap-2">
+                <div class="text-xl font-bold text-primary">TrainerApp</div>
+            </div>
+        </div>
+
+        <div class="px-4 py-3 border-b">
+            <input [(ngModel)]="searchTerm" (ngModelChange)="onSearchChange()" type="text"
+                class="input input-bordered w-full" placeholder="Buscar exercícios..." />
+        </div>
+
+        <div class="px-4 py-3 border-b">
+            <h3 class="font-semibold text-sm">Categorias</h3>
+            <div class="filter-buttons mt-3 flex flex-wrap gap-2">
+                <button *ngFor="let cat of categories" (click)="onSelectCategory(cat)" [ngClass]="{
+            'btn': true,
+            'btn-sm': true,
+            'btn-outline': selectedCategory !== cat,
+            'bg-primary text-white border-primary': selectedCategory === cat
+          }">
+                    {{ cat }}
+                </button>
+            </div>
+        </div>
+
+        <div class="exercises-list flex-1 overflow-y-auto">
+            <div *ngFor="let ex of filteredExercises"
+                class="exercise-item p-4 border-b cursor-pointer transition hover:bg-base-100"
+                [ngClass]="{ 'bg-base-200 border-r-4 border-primary': isActiveExercise(ex) }"
+                (click)="selectExercise(ex)">
+                <div class="exercise-name font-semibold">{{ ex.name }}</div>
+                <div class="exercise-meta text-sm text-muted flex items-center gap-2">
+                    <span>{{ ex.muscle || ex.category }}</span>
+                    <span>●</span>
+                    <span>{{ ex.duration }}</span>
+                </div>
+            </div>
+
+            <div *ngIf="filteredExercises.length === 0" class="p-4 text-sm text-center text-muted">
+                Nenhum exercício encontrado.
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="flex-1 flex flex-col overflow-y-auto">
+        <header class="p-6 border-b bg-gray-800
+">
+            <h2 class="text-lg font-semibold">Detalhes do Exercício</h2>
+        </header>
+
+        <section class="exercise-detail p-6 overflow-y-auto">
+            <h1 class="exercise-title text-2xl font-bold mb-4">{{ selectedExercise.name }}</h1>
+
+            <div class="exercise-video mb-6 max-w-3xl rounded-lg overflow-hidden">
+                <div class="video-placeholder flex items-center justify-center">
+                    <ng-container *ngIf="selectedExercise?.videoUrl; else placeholder">
+                        <!-- se tiver URL de vídeo, incorporar aqui (ex: iframe) -->
+                        <iframe [src]="selectedExercise.videoUrl" frameborder="0" allowfullscreen
+                            class="w-full h-full"></iframe>
+                    </ng-container>
+                    <ng-template #placeholder>
+                        <div class="text-white">Vídeo do exercício (incorporado)</div>
+                    </ng-template>
+                </div>
+            </div>
+
+            <div class="exercise-description max-w-3xl leading-relaxed">
+                <p class="mb-4">{{ selectedExercise.description }}</p>
+
+                <h3 class="font-semibold mb-2">Execução:</h3>
+                <ol class="list-decimal pl-5 mb-4">
+                    <li>Deite-se de costas em um banco reto com os pés apoiados no chão</li>
+                    <li>Segure a barra com as mãos slightly wider than shoulder-width apart</li>
+                    <li>Baixe a barra controladamente até tocar levemente o peito</li>
+                    <li>Empurre a barra para cima até estender completamente os braços</li>
+                    <li>Mantenha as costas retas e ombros estabilizados durante o movimento</li>
+                </ol>
+
+                <h3 class="font-semibold mb-2">Dicas:</h3>
+                <ul class="list-disc pl-5">
+                    <li>Mantenha os punhos alinhados com os antebraços</li>
+                    <li>Evite arquear excessivamente as costas</li>
+                    <li>Expire ao empurrar a barra para cima e inspire ao baixar</li>
+                    <li>Use um spotter ao trabalhar com cargas mais pesadas</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+</div>

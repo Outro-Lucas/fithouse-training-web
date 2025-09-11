@@ -2,11 +2,14 @@ import { Routes } from '@angular/router';
 import { LandingPage } from './pages/landing-page/landing-page';
 import { Login } from './pages/login/login';
 import { Tutorials } from './pages/tutorials/tutorials';
+import { Dashboard } from './pages/dashboard/dashboard';
+import { clientGuard, publicGuard, trainerGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-    { path: '', component: LandingPage },
-    { path: 'auth', component: Login },
-    { path: 'principal', component: Tutorials },
-    // { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
-    // { path: 'auth/login', component: LoginComponent, canActivate: [NoUserGuard] },
+    { path: '', component: LandingPage, canActivate: [publicGuard] },
+    { path: 'auth', component: Login, canActivate: [publicGuard] },
+    { path: 'treino', component: Tutorials, canActivate: [clientGuard] },
+    { path: 'inicio', component: Dashboard, canActivate: [publicGuard] },
+    // { path: 'inicio', component: Dashboard, canActivate: [trainerGuard] },
+    { path: '**', redirectTo: '' } // fallback para qualquer rota inválida
 ];
