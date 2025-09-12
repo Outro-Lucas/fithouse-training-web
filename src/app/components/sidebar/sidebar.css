@@ -1,0 +1,26 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.sidebar nav {
+    flex: 1;
+    /* força o menu ocupar todo o espaço disponível */
+}
+
+.sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    z-index: 10;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+@media (min-width: 640px) {
+    .sidebar {
+        transform: translateX(0) !important;
+    }
+}

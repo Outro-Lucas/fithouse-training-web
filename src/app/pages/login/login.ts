@@ -42,8 +42,6 @@ export class Login {
 
     this.authService.login(body).subscribe({
       next: (result: any) => {
-        console.log(result);
-
         this.global.setSession(result.user, result.access_token);
 
         if (this.global.user?.type === Role.client) {

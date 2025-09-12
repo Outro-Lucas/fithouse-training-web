@@ -1,0 +1,41 @@
+@if(open === false) {
+<div class="sm:hidden">
+    <button style="width: 3rem;" class="fixed top-0 left-0 right-0 z-20 p-2 m-2 text-white bg-blue-600 rounded"
+        (click)="toggleSidebar()">
+        ☰
+    </button>
+    <div class="h-12"></div>
+</div>
+}
+
+<div class="flex">
+    <!-- Sidebar -->
+    <aside
+        class="sidebar fixed top-0 left-0 h-full w-64 bg-gray-800 text-white flex flex-col transition-transform duration-300 sm:translate-x-0 sm:block"
+        [class.open]="open">
+        <div class="p-4 text-xl font-bold border-b border-gray-700">
+            Meu App
+        </div>
+
+        <!-- Menu: flex-1 força ocupar todo o espaço disponível -->
+        <nav class="flex-1 p-4 space-y-2">
+            <a routerLink="/inicio" class="block p-2 rounded hover:bg-gray-700" (click)="closeSidebar()">Início</a>
+            <a routerLink="/categorias" class="block p-2 rounded hover:bg-gray-700"
+                (click)="closeSidebar()">Categorias</a>
+            <a routerLink="/exercicios" class="block p-2 rounded hover:bg-gray-700"
+                (click)="closeSidebar()">Exercícios</a>
+        </nav>
+
+        <!-- Logout sempre na parte de baixo -->
+        <div class="p-4 border-t border-gray-700">
+            <button class="w-full p-2 bg-red-600 rounded hover:bg-red-700" (click)="logout()">
+                Logout
+            </button>
+        </div>
+    </aside>
+
+    <!-- Conteúdo principal -->
+    <main class="flex-1 min-h-screen p-4 sm:ml-64">
+        <ng-content></ng-content>
+    </main>
+</div>
