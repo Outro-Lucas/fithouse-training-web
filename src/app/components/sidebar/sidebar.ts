@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
   imports: [
     CommonModule,
+    RouterLink
   ],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css'

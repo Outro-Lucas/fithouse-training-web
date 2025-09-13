@@ -1,4 +1,44 @@
 <app-sidebar>
-    <h1 class="text-2xl font-bold">Categorias</h1>
-    <p>Conteúdo da página...</p>
+    <div class="p-2">
+        <div class="text-3xl font-bold">Categorias</div>
+        <div class="dropdown pt-4">
+            <div tabindex="0" role="button" class="btn flex btn-outline items-center mb-1">
+                <i class="bi bi-plus-circle"></i>
+                <span class="text-xs">Adicionar</span>
+            </div>
+            <fieldset tabindex="0"
+                class="fieldset dropdown-content z-[1] menu bg-base-200 border-base-300 rounded-box w-xs border p-4">
+                <legend class="fieldset-legend">Nova categoria</legend>
+                <label class="label">Nome</label>
+                <input [(ngModel)]="newCatName" type="text" class="input" placeholder="Insira um nome..." />
+                <button (click)="createCategory()" class="btn btn-outline mt-4">Criar</button>
+            </fieldset>
+        </div>
+    </div>
+
+    <div class="overflow-x-auto">
+        <table class="table table-zebra">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Criado</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of categories; index as i">
+                    <th>{{ i + 1 }}</th>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.createdAt | date: 'dd/MM/yyyy' }}</td>
+                    <td>
+                        <div class="tooltip" data-tip="Deletar Categoria">
+                            <i (click)="deleteCategory(item)" class="bi bi-trash cursor-pointer"></i>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 </app-sidebar>

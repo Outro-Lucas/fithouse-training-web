@@ -1,4 +1,152 @@
 <app-sidebar>
-    <h1 class="text-2xl font-bold">Exercícios</h1>
-    <p>Conteúdo da página...</p>
+    <div class="p-2">
+        <div class="text-3xl font-bold pb-4">Exercícios</div>
+        <button type="button" class="btn btn-outline flex items-center mb-1" (click)="openAnyDialog('create', null)">
+            <i class="bi bi-plus-circle"></i>
+            <span class="text-xs">Adicionar</span>
+        </button>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="table table-zebra">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Categoria</th>
+                    <th>Criado em</th>
+                    <th style="width: 8rem;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of exercises; index as i">
+                    <th>{{ i + 1 }}</th>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.category.name }}</td>
+                    <td>{{ item.createdAt | date: 'dd/MM/yyyy' }}</td>
+                    <td>
+                        <div class="tooltip mr-5" data-tip="Editar Exercício">
+                            <i (click)="openAnyDialog('update', item)" class="bi bi-pencil-square cursor-pointer"></i>
+                        </div>
+                        <div class="tooltip" data-tip="Deletar Exercício">
+                            <i (click)="openAnyDialog('delete', item)" class="bi bi-trash cursor-pointer"></i>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </app-sidebar>
+
+<dialog #createDialog class="modal">
+    <div class="modal-box max-w-lg">
+        <h3 class="text-lg font-bold mb-4">Criar Exercício</h3>
+        <form [formGroup]="newExerciseForm" class="space-y-4">
+            <div>
+                <label class="label font-semibold">Nome</label>
+                <input type="text" formControlName="name" class="input input-bordered w-full"
+                    placeholder="Nome do exercício" />
+            </div>
+            <div>
+                <label class="label font-semibold">Descrição</label>
+                <textarea formControlName="description" class="textarea textarea-bordered w-full"
+                    placeholder="Descrição">
+                </textarea>
+            </div>
+            <div>
+                <label class="label font-semibold">URL do Vídeo</label>
+                <input type="text" formControlName="videoUrl" class="input input-bordered w-full"
+                    placeholder="https://youtube.com/..." />
+            </div>
+            <div>
+                <label class="label font-semibold">Categoria</label>
+                <select formControlName="category" class="select select-bordered w-full">
+                    <option value="" disabled selected>Selecione uma categoria</option>
+                    @for (cat of categories; track cat._id) {
+                    <option [value]="cat._id">{{ cat.name }}</option>
+                    }
+                </select>
+            </div>
+
+            <div class="modal-action flex space-x-2">
+                <button type="button" class="btn btn-outline flex-1" (click)="closeAnyDialog('create')">
+                    Cancelar
+                </button>
+                <button (click)="createExercise()" type="submit" class="btn btn-primary flex-1"
+                    [disabled]="newExerciseForm.invalid">
+                    Criar
+                </button>
+            </div>
+        </form>
+    </div>
+    <!-- Backdrop -->
+    <!-- <form method="dialog" class="modal-backdrop">
+        <button>Fechar</button>
+    </form> -->
+</dialog>
+
+<dialog #updateDialog class="modal">
+    <div class="modal-box max-w-lg">
+        <h3 class="text-lg font-bold mb-4">Atualizar Exercício</h3>
+        <form [formGroup]="putExerciseForm" class="space-y-4">
+            <div>
+                <label class="label font-semibold">Nome</label>
+                <input type="text" formControlName="name" class="input input-bordered w-full"
+                    placeholder="Nome do exercício" />
+            </div>
+            <div>
+                <label class="label font-semibold">Descrição</label>
+                <textarea formControlName="description" class="textarea textarea-bordered w-full"
+                    placeholder="Descrição">
+                </textarea>
+            </div>
+            <div>
+                <label class="label font-semibold">URL do Vídeo</label>
+                <input type="text" formControlName="videoUrl" class="input input-bordered w-full"
+                    placeholder="https://youtube.com/..." />
+            </div>
+            <div>
+                <label class="label font-semibold">Categoria</label>
+                <select formControlName="category" class="select select-bordered w-full">
+                    <option value="" disabled selected>Selecione uma categoria</option>
+                    @for (cat of categories; track cat._id) {
+                    <option [value]="cat._id">{{ cat.name }}</option>
+                    }
+                </select>
+            </div>
+
+            <div class="modal-action flex space-x-2">
+                <button type="button" class="btn btn-outline flex-1" (click)="closeAnyDialog('update')">
+                    Cancelar
+                </button>
+                <button (click)="editExercise()" type="submit" class="btn btn-primary flex-1"
+                    [disabled]="putExerciseForm.invalid">
+                    Editar
+                </button>
+            </div>
+        </form>
+    </div>
+    <!-- Backdrop -->
+    <!-- <form method="dialog" class="modal-backdrop">
+        <button>Fechar</button>
+    </form> -->
+</dialog>
+
+<dialog #deleteDialog class="modal">
+    <div class="modal-box max-w-sm text-center">
+        <h3 class="text-lg font-bold mb-4">Tem certeza que deseja deletar este exercício?</h3>
+
+        <div class="modal-action flex justify-center space-x-4 mt-4">
+            <button type="button" class="btn btn-outline btn-error flex-1" (click)="deleteExercise()">
+                Sim
+            </button>
+            <button type="button" class="btn btn-outline flex-1" (click)="closeAnyDialog('delete')">
+                Não
+            </button>
+        </div>
+    </div>
+
+    <!-- Backdrop para fechar ao clicar fora -->
+    <!-- <form method="dialog" class="modal-backdrop">
+        <button>Fechar</button>
+    </form> -->
+</dialog>
