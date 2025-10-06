@@ -1,0 +1,80 @@
+:host {
+  display: block;
+}
+
+/* Limita texto a 2 linhas */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Largura fixa dos cards e espaçamento */
+.carousel-card {
+  width: 300px; /* Largura fixa definida via CSS */
+  padding: 0 8px; /* Espaçamento entre cards */
+}
+
+/* Container do carousel com largura fixa baseada no número máximo de cards visíveis */
+.carousel-container {
+  width: 948px; /* 3 cards * (300px + 16px de padding) = 948px */
+}
+
+/* Garante que o card ocupe toda a largura disponível */
+.carousel-card .card {
+  width: 100%;
+}
+
+/* Botões de navegação */
+.btn-circle {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-circle:hover {
+  opacity: 0.9;
+  transform: none;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 1024px) {
+  .carousel-container {
+    width: 632px; /* 2 cards * (300px + 16px) = 632px */
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    width: 300px; /* 1 card * (300px + 0px de padding) = 300px */
+  }
+
+  .carousel-card {
+    width: 280px; /* Largura menor para mobile */
+    padding: 0;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .btn-circle {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .btn-circle i {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .carousel-container {
+    width: 948px; /* Mantém 3 cards em telas grandes */
+  }
+}
