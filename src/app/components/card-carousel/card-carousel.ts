@@ -7,7 +7,6 @@ interface Card {
   imageUrl: string;
   title: string;
   description: string;
-  buttonText: string;
 }
 
 @Component({
@@ -20,49 +19,43 @@ export class CardCarousel {
   cards: Card[] = [
     {
       id: 1,
-      imageUrl: 'https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp',
-      title: 'Treino Iniciante',
+      imageUrl: '/flexao.jpg',
+      title: 'Treino de Superiores',
       description:
-        'Perfeito para quem está começando. Exercícios básicos e de fácil execução para criar o hábito de treinar.',
-      buttonText: 'Começar Agora',
+        'Fortaleça peito, ombros e braços com exercícios clássicos da calistenia como flexões, dips e pranchas.',
     },
     {
       id: 2,
-      imageUrl: 'https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp',
-      title: 'Treino Intermediário',
-      description:
-        'Para quem já tem experiência e quer evoluir. Exercícios moderados com maior intensidade.',
-      buttonText: 'Quero Evoluir',
+      imageUrl: '/agachamento.jpg',
+      title: 'Treino de Inferiores',
+      description: 'Trabalhe pernas e glúteos com agachamentos, avanços e pistol squats.',
     },
     {
       id: 3,
-      imageUrl: 'https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp',
-      title: 'Treino Avançado',
+      imageUrl: '/prancha.jpg',
+      title: 'Treino de Abdômen',
       description:
-        'Desafios intensos para resultados máximos. Para alunos que buscam performance elevada.',
-      buttonText: 'Desafiar-me',
+        'Fortaleça o abdômen e estabilize o corpo com pranchas, leg raises e exercícios isométricos de calistenia.',
     },
     {
       id: 4,
-      imageUrl: 'https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp',
-      title: 'Treino Express',
-      description:
-        'Treinos curtos de alta intensidade para resultados rápidos, perfeito para dias corridos.',
-      buttonText: 'Treinar Rápido',
+      imageUrl: '/upper.jpg',
+      title: 'Treino de Corpo Inteiro',
+      description: 'Combine movimentos compostos para trabalhar o corpo todo em uma única sessão.',
     },
     {
       id: 5,
-      imageUrl: 'https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp',
-      title: 'Yoga Fitness',
-      description: 'Combina posturas de yoga com exercícios funcionais para flexibilidade e força.',
-      buttonText: 'Experimentar',
+      imageUrl: '/alongamento.jpg',
+      title: 'Mobilidade e Alongamento',
+      description:
+        'Melhore mobilidade e flexibilidade com alongamentos dinâmicos e controle corporal da calistenia.',
     },
     {
       id: 6,
-      imageUrl: 'https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp',
-      title: 'Treino em Dupla',
-      description: 'Exercícios especiais para fazer com parceiro(a), ideal para casais e amigos.',
-      buttonText: 'Convidar',
+      imageUrl: '/corrida.jpg',
+      title: 'Treino de Resistência',
+      description:
+        'Aumente resistência e condicionamento com circuitos intensos para queimar gordura.',
     },
   ];
 
@@ -135,5 +128,11 @@ export class CardCarousel {
   goToSlide(index: number) {
     const maxIndex = this.getTotalSlides() - 1;
     this.currentIndex = Math.min(index, maxIndex);
+  }
+
+  goToHortmart() {
+    if (isPlatformBrowser(this.platformId)) {
+      window.open('https://hotmart.com/pt-br', '_blank');
+    }
   }
 }
