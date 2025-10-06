@@ -67,67 +67,56 @@ export class CardCarousel {
   ];
 
   currentIndex = 0;
-  visibleCards = 1;
-  maxVisibleCards = 3; // Máximo de cards visíveis
 
-  constructor(@Inject(PLATFORM_ID) private platformId: any) {
-    this.updateVisibleCards();
-  }
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {}
 
   @HostListener('window:resize')
   onResize() {
-    if (isPlatformBrowser(this.platformId)) {
-      this.updateVisibleCards();
-    }
+    // Ajusta o currentIndex quando a tela é redimensionada
+    this.adjustCurrentIndex();
   }
 
-  updateVisibleCards() {
-    if (isPlatformBrowser(this.platformId)) {
-      const width = window.innerWidth;
-      if (width < 768) {
-        this.visibleCards = 1;
-      } else if (width < 1024) {
-        this.visibleCards = 2;
-      } else {
-        this.visibleCards = this.maxVisibleCards; // Máximo de 3 cards
-      }
+  getVisibleCards(): number {
+    if (!isPlatformBrowser(this.platformId)) return 1;
 
-      // Ajusta o currentIndex para não ultrapassar o limite
-      this.adjustCurrentIndex();
+    const width = window.innerWidth;
+    if (width < 768) {
+      return 1;
+    } else if (width < 1024) {
+      return 2;
     } else {
-      this.visibleCards = 1;
+      return 3;
     }
   }
 
-  // Ajusta o currentIndex para não mostrar cards cortados
+  getTotalSlides(): number {
+    const visibleCards = this.getVisibleCards();
+    return Math.ceil(this.cards.length / visibleCards);
+  }
+
   adjustCurrentIndex() {
-    const maxIndex = Math.max(0, this.cards.length - this.visibleCards);
+    const maxIndex = this.getTotalSlides() - 1;
     if (this.currentIndex > maxIndex) {
       this.currentIndex = maxIndex;
     }
   }
 
   next() {
-    const maxIndex = Math.max(0, this.cards.length - this.visibleCards);
+    const maxIndex = this.getTotalSlides() - 1;
     if (this.currentIndex < maxIndex) {
       this.currentIndex++;
     } else {
-      this.currentIndex = 0; // Volta para o início (ciclo infinito)
+      this.currentIndex = 0;
     }
   }
 
   prev() {
-    const maxIndex = Math.max(0, this.cards.length - this.visibleCards);
+    const maxIndex = this.getTotalSlides() - 1;
     if (this.currentIndex > 0) {
       this.currentIndex--;
     } else {
-      this.currentIndex = maxIndex; // Vai para o final (ciclo infinito)
+      this.currentIndex = maxIndex;
     }
-  }
-
-  getTransform(): string {
-    const cardWidth = 316; // 300px (card) + 16px (padding)
-    return `translateX(-${this.currentIndex * cardWidth}px)`;
   }
 
   trackByCardId(index: number, card: Card): number {
@@ -136,7 +125,7 @@ export class CardCarousel {
 
   getVisibleSlides(): number[] {
     const slides = [];
-    const totalSlides = Math.max(1, this.cards.length - this.visibleCards + 1);
+    const totalSlides = this.getTotalSlides();
     for (let i = 0; i < totalSlides; i++) {
       slides.push(i);
     }
@@ -144,7 +133,7 @@ export class CardCarousel {
   }
 
   goToSlide(index: number) {
-    const maxIndex = Math.max(0, this.cards.length - this.visibleCards);
+    const maxIndex = this.getTotalSlides() - 1;
     this.currentIndex = Math.min(index, maxIndex);
   }
 }

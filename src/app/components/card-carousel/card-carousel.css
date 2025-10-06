@@ -2,31 +2,34 @@
   display: block;
 }
 
-/* Limita texto a 2 linhas */
-.line-clamp-2 {
+.carousel-viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  width: 100%;
+}
+
+.carousel-card {
+  flex: 0 0 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.carousel-card .card {
+  max-width: 320px; /* DEFINA A LARGURA MÁXIMA AQUI */
+  margin: 0 auto; /* Centraliza o card */
+}
+
+.line-clamp-3 {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  /* -webkit-line-clamp: 3; */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-/* Largura fixa dos cards e espaçamento */
-.carousel-card {
-  width: 300px; /* Largura fixa definida via CSS */
-  padding: 0 8px; /* Espaçamento entre cards */
-}
-
-/* Container do carousel com largura fixa baseada no número máximo de cards visíveis */
-.carousel-container {
-  width: 948px; /* 3 cards * (300px + 16px de padding) = 948px */
-}
-
-/* Garante que o card ocupe toda a largura disponível */
-.carousel-card .card {
-  width: 100%;
-}
-
-/* Botões de navegação */
 .btn-circle {
   width: 2.5rem;
   height: 2.5rem;
@@ -37,44 +40,25 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.btn-circle:hover {
-  opacity: 0.9;
-  transform: none;
-}
-
-/* Ajustes responsivos */
-@media (max-width: 1024px) {
-  .carousel-container {
-    width: 632px; /* 2 cards * (300px + 16px) = 632px */
-  }
-}
-
-@media (max-width: 768px) {
-  .carousel-container {
-    width: 300px; /* 1 card * (300px + 0px de padding) = 300px */
-  }
-
+@media (min-width: 768px) {
   .carousel-card {
-    width: 280px; /* Largura menor para mobile */
-    padding: 0;
+    flex: 0 0 50%;
   }
+}
 
-  .card-body {
-    padding: 1rem;
+@media (min-width: 1024px) {
+  .carousel-card {
+    flex: 0 0 33.333%;
+  }
+}
+
+@media (max-width: 767px) {
+  .carousel-card {
+    padding: 0 12px;
   }
 
   .btn-circle {
     width: 2rem;
     height: 2rem;
-  }
-
-  .btn-circle i {
-    font-size: 1rem;
-  }
-}
-
-@media (min-width: 1280px) {
-  .carousel-container {
-    width: 948px; /* Mantém 3 cards em telas grandes */
   }
 }
