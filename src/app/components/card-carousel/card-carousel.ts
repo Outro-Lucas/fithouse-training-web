@@ -19,40 +19,40 @@ export class CardCarousel {
   cards: Card[] = [
     {
       id: 1,
-      imageUrl: '/flexao.jpg',
+      imageUrl: 'flexao.jpg',
       title: 'Treino de Superiores',
       description:
         'Fortaleça peito, ombros e braços com exercícios clássicos da calistenia como flexões, dips e pranchas.',
     },
     {
       id: 2,
-      imageUrl: '/agachamento.jpg',
+      imageUrl: 'agachamento.jpg',
       title: 'Treino de Inferiores',
       description: 'Trabalhe pernas e glúteos com agachamentos, avanços e pistol squats.',
     },
     {
       id: 3,
-      imageUrl: '/prancha.jpg',
+      imageUrl: 'prancha.jpg',
       title: 'Treino de Abdômen',
       description:
         'Fortaleça o abdômen e estabilize o corpo com pranchas, leg raises e exercícios isométricos de calistenia.',
     },
     {
       id: 4,
-      imageUrl: '/upper.jpg',
+      imageUrl: 'upper.jpg',
       title: 'Treino de Corpo Inteiro',
       description: 'Combine movimentos compostos para trabalhar o corpo todo em uma única sessão.',
     },
     {
       id: 5,
-      imageUrl: '/alongamento.jpg',
+      imageUrl: 'alongamento.jpg',
       title: 'Mobilidade e Alongamento',
       description:
         'Melhore mobilidade e flexibilidade com alongamentos dinâmicos e controle corporal da calistenia.',
     },
     {
       id: 6,
-      imageUrl: '/corrida.jpg',
+      imageUrl: 'corrida.jpg',
       title: 'Treino de Resistência',
       description:
         'Aumente resistência e condicionamento com circuitos intensos para queimar gordura.',
