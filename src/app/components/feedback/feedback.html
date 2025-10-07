@@ -1,0 +1,70 @@
+<div class="text-center mb-12">
+  <h2 class="text-3xl font-bold text-white">Depoimentos de Alunos</h2>
+</div>
+
+<div class="relative w-full max-w-4xl mx-auto">
+  <div class="flex items-center">
+    <!-- Botão Esquerdo -->
+    <div class="w-12 md:w-16 flex justify-center z-10">
+      <button (click)="prev()" class="btn btn-circle bg-white opacity-80">
+        <i class="bi bi-caret-left-fill text-lg md:text-xl text-black"></i>
+      </button>
+    </div>
+
+    <!-- Área do Carousel -->
+    <div class="flex-1 overflow-hidden">
+      <div class="carousel-viewport">
+        <div
+          class="carousel-track transition-transform duration-500 ease-in-out"
+          [style.transform]="'translateX(-' + currentIndex * 100 + '%)'"
+        >
+          <div *ngFor="let review of reviews; trackBy: trackByReviewId" class="carousel-card">
+            <!-- Card de Review - CORES AJUSTADAS -->
+            <div
+              class="bg-black rounded-2xl shadow-xl p-8 mx-4 border text-white"
+              style="border-color: var(--color-primary)"
+            >
+              <!-- Cabeçalho com Avatar e Informações -->
+              <div class="flex items-center gap-4 mb-6">
+                <div class="avatar">
+                  <div class="w-16 rounded-full">
+                    <img [src]="review.avatarUrl" [alt]="review.userName" />
+                  </div>
+                </div>
+                <div>
+                  <h3 class="font-bold text-lg text-white">{{ review.userName }}</h3>
+                </div>
+              </div>
+
+              <!-- Título em Destaque -->
+              <h4 class="text-xl font-bold text-white mb-4">{{ review.title }}</h4>
+
+              <!-- Descrição -->
+              <p class="text-gray-300 leading-relaxed text-justify">
+                {{ review.description }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botão Direito -->
+    <div class="w-12 md:w-16 flex justify-center z-10">
+      <button (click)="next()" class="btn btn-circle bg-white opacity-80">
+        <i class="bi bi-caret-right-fill text-lg md:text-xl text-black"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Indicator Dots -->
+  <div class="flex justify-center mt-8 space-x-3">
+    <div
+      *ngFor="let dot of getVisibleSlides(); let i = index"
+      class="w-3 h-3 rounded-full transition-all duration-300 cursor-pointer"
+      [class.bg-primary]="i === currentIndex"
+      [class.bg-gray-600]="i !== currentIndex"
+      (click)="goToSlide(i)"
+    ></div>
+  </div>
+</div>

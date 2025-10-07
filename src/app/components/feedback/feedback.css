@@ -1,0 +1,52 @@
+:host {
+  display: block;
+}
+
+.carousel-viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+}
+
+.carousel-card {
+  flex: 0 0 100%;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+}
+
+/* Ajustes responsivos */
+@media (min-width: 768px) {
+  .carousel-card {
+    padding: 0 1rem;
+  }
+}
+
+/* Melhora a aparência dos botões */
+.btn-circle {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.btn-circle:hover {
+  transform: scale(1.1);
+  background-color: #f8fafc !important;
+}
+
+/* Ajustes para mobile */
+@media (max-width: 767px) {
+  .carousel-card {
+    padding: 0 0.25rem;
+  }
+
+  .btn-circle {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
