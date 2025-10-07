@@ -1,0 +1,38 @@
+<footer class="text-base-content">
+  <div class="footer footer-center p-10 bg-base-200 flex flex-col items-center">
+    <div>
+      <h2 class="text-3xl font-bold text-center">Entre em contato comigo</h2>
+    </div>
+    <!-- Socials -->
+    <nav class="grid grid-flow-col gap-6">
+      <a
+        (click)="redirectTo('whatsapp')"
+        class="btn btn-ghost btn-sm btn-circle hover:bg-base-300 hover:text-primary"
+      >
+        <i class="bi bi-whatsapp text-4xl"></i>
+      </a>
+      <a
+        (click)="redirectTo('instagram')"
+        class="btn btn-ghost btn-sm btn-circle hover:bg-base-300 hover:text-primary"
+      >
+        <i class="bi bi-instagram text-4xl"></i>
+      </a>
+      <a
+        (click)="redirectTo('facebook')"
+        class="btn btn-ghost btn-sm btn-circle hover:bg-base-300 hover:text-primary"
+      >
+        <i class="bi bi-facebook text-4xl"></i>
+      </a>
+      <!-- <a
+        (click)="redirectTo('youtube')"
+        class="btn btn-ghost btn-sm btn-circle hover:bg-base-300 hover:text-primary"
+      >
+        <i class="bi bi-youtube text-4xl"></i>
+      </a> -->
+    </nav>
+  </div>
+
+  <aside class="footer footer-center p-5 bg-base-200 text-base-content">
+    <p>© Lucas Guerra. Todos os direitos reservados.</p>
+  </aside>
+</footer>
