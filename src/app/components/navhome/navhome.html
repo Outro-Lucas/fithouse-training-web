@@ -2,7 +2,8 @@
   <!-- Logo -->
   <div class="flex-1">
     <a
-      class="btn btn-ghost text-xl"
+      (click)="scrollToSection('inicio')"
+      class="btn btn-ghost text-xl cursor-pointer"
       style="font-family: 'Orbitron', 'Montserrat', sans-serif; color: var(--color-primary)"
     >
       Lucca Guerra
@@ -16,19 +17,42 @@
   <!-- Menu Desktop -->
   <div class="flex-none hidden md:block">
     <ul class="menu menu-lg menu-horizontal px-1">
-    <li><a style="color: var(--color-primary)">Início</a></li>
-    <li><a style="color: var(--color-primary)">Sobre</a></li>
-    <li><a style="color: var(--color-primary)">Serviços</a></li>
-    <li><a style="color: var(--color-primary)">Depoimentos</a></li>
-    <li><a style="color: var(--color-primary)">Contato</a></li>
-      <!-- <li><a class="login-item" routerLink="/auth">Login</a></li> -->
+      <li>
+        <a
+          (click)="scrollToSection('features')"
+          style="color: var(--color-primary); cursor: pointer"
+          >Beneficios</a
+        >
+      </li>
+      <li>
+        <a (click)="scrollToSection('cursos')" style="color: var(--color-primary); cursor: pointer"
+          >Cursos</a
+        >
+      </li>
+      <li>
+        <a (click)="scrollToSection('sobre')" style="color: var(--color-primary); cursor: pointer"
+          >Sobre</a
+        >
+      </li>
+      <li>
+        <a
+          (click)="scrollToSection('feedback')"
+          style="color: var(--color-primary); cursor: pointer"
+          >Depoimentos</a
+        >
+      </li>
+      <li>
+        <a (click)="scrollToSection('contato')" style="color: var(--color-primary); cursor: pointer"
+          >Contato</a
+        >
+      </li>
     </ul>
   </div>
 
   <!-- Menu Mobile -->
   <div class="flex-none md:hidden">
     <div class="dropdown dropdown-end">
-      <button tabindex="0" class="btn btn-ghost">
+      <button type="button" tabindex="0" class="btn btn-ghost">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6"
@@ -48,11 +72,39 @@
         tabindex="0"
         class="menu menu-md dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
       >
-        <li><a style="color: var(--color-primary)">Início</a></li>
-        <li><a style="color: var(--color-primary)">Sobre</a></li>
-        <li><a style="color: var(--color-primary)">Serviços</a></li>
-        <li><a style="color: var(--color-primary)">Depoimentos</a></li>
-        <li><a style="color: var(--color-primary)">Contato</a></li>
+        <li>
+          <a
+            (click)="scrollToSection('features')"
+            style="color: var(--color-primary); cursor: pointer"
+            >Beneficios</a
+          >
+        </li>
+        <li>
+          <a
+            (click)="scrollToSection('cursos')"
+            style="color: var(--color-primary); cursor: pointer"
+            >Cursos</a
+          >
+        </li>
+        <li>
+          <a (click)="scrollToSection('sobre')" style="color: var(--color-primary); cursor: pointer"
+            >Sobre</a
+          >
+        </li>
+        <li>
+          <a
+            (click)="scrollToSection('feedback')"
+            style="color: var(--color-primary); cursor: pointer"
+            >Depoimentos</a
+          >
+        </li>
+        <li>
+          <a
+            (click)="scrollToSection('contato')"
+            style="color: var(--color-primary); cursor: pointer"
+            >Contato</a
+          >
+        </li>
       </ul>
     </div>
   </div>

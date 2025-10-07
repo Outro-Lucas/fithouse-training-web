@@ -1,5 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-@import "tailwindcss";
+@import 'tailwindcss';
 @plugin "daisyui" {
   themes: halloween --default;
+}
+
+/* Scroll suave para toda a aplicação */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ajuste fino para as seções */
+section {
+  scroll-margin-top: 80px; /* Compensa a navbar fixa */
 }
