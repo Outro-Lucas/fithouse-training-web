@@ -1,1 +1,66 @@
-<p>about-me works!</p>
+<div class="bg-primary text-primary-content py-12 sm:py-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-4xl mx-auto">
+    <div class="flex flex-col lg:flex-row gap-8 lg:gap-20 items-center">
+      <!-- Coluna da Foto - Simplificada no Mobile -->
+      <div class="w-full lg:w-1/2 relative group">
+        <div
+          class="lg:relative lg:z-10 lg:transform lg:group-hover:scale-105 lg:transition-all lg:duration-500"
+        >
+          <div class="rounded-2xl overflow-hidden shadow-2xl">
+            <img
+              src="./lucca.jpg"
+              alt="Personal Trainer"
+              class="w-full h-auto lg:grayscale lg:group-hover:grayscale-0 lg:transition-all lg:duration-500 mx-auto max-w-sm sm:max-w-md"
+            />
+          </div>
+        </div>
+
+        <!-- Elemento decorativo - apenas no desktop -->
+        <div
+          class="hidden lg:block absolute -inset-2 bg-accent rounded-xl transform rotate-2 opacity-20 group-hover:rotate-3 transition-all duration-500"
+        ></div>
+      </div>
+
+      <!-- Coluna do Texto - Centralizada no Mobile -->
+      <div class="w-full lg:w-1/2 space-y-4 text-base text-center lg:text-left">
+        <h1 class="text-3xl sm:text-4xl font-bold leading-tight">Sobre Mim</h1>
+
+        <div class="space-y-3 leading-relaxed">
+          <p>
+            Com mais de <strong>5 anos de experiência</strong> na área de educação física, minha
+            missão é ajudar você a alcançar seus objetivos de forma
+            <strong>saudável e sustentável</strong>.
+          </p>
+
+          <p>
+            Especializado em <strong>treinamento funcional</strong>, <strong>musculação</strong> e
+            <strong>condicionamento físico</strong>, desenvolvo programas personalizados que se
+            adaptam ao seu estilo de vida e necessidades individuais.
+          </p>
+
+          <!-- <div
+            class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2 justify-items-center lg:justify-items-start"
+          >
+            <div class="flex items-center space-x-2">
+              <div class="w-2 h-2 bg-accent rounded-full"></div>
+              <span>Treino Personalizado</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <div class="w-2 h-2 bg-accent rounded-full"></div>
+              <span>Acompanhamento Nutricional</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <div class="w-2 h-2 bg-accent rounded-full"></div>
+              <span>Consultoria Online</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <div class="w-2 h-2 bg-accent rounded-full"></div>
+              <span>Suporte Contínuo</span>
+            </div>
+          </div> -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

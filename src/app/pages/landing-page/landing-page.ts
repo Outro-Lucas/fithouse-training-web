@@ -4,6 +4,7 @@ import { Hero } from '../../components/hero/hero';
 import { CardCarousel } from '../../components/card-carousel/card-carousel';
 import { Features } from "../../components/features/features";
 import { FoorterHome } from "../../components/foorter-home/foorter-home";
+import { AboutMe } from "../../components/about-me/about-me";
 
 @Component({
   selector: 'app-landing-page',
@@ -12,7 +13,8 @@ import { FoorterHome } from "../../components/foorter-home/foorter-home";
     Hero,
     CardCarousel,
     Features,
-    FoorterHome
+    FoorterHome,
+    AboutMe
 ],
   templateUrl: './landing-page.html',
   styleUrl: './landing-page.css'
