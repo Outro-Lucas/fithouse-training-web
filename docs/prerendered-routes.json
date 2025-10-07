@@ -1,0 +1,10 @@
+{
+  "routes": {
+    "/fithouse-training-web": {},
+    "/fithouse-training-web/auth": {},
+    "/fithouse-training-web/categorias": {},
+    "/fithouse-training-web/exercicios": {},
+    "/fithouse-training-web/inicio": {},
+    "/fithouse-training-web/treino": {}
+  }
+}
