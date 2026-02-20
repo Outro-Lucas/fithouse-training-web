@@ -30,7 +30,7 @@
     "@angular/platform-browser": "^20.3.0",
     "@angular/platform-server": "^20.3.0",
     "@angular/router": "^20.3.0",
-    "@angular/ssr": "^20.2.2",
+    "@angular/ssr": "^20.3.16",
     "@tailwindcss/postcss": "^4.1.13",
     "bootstrap-icons": "^1.13.1",
     "daisyui": "^5.1.27",
